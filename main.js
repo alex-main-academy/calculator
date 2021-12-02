@@ -18,7 +18,9 @@ buttonNum.forEach((elem) => {
 
         if (inputArr[0] == buttonNum[10].innerHTML) {
             inputArr.splice(0, inputArr.length)
+            inputArr.push(0)
             input.innerHTML = inputArr.join('')
+            inputArr.pop()
         }
     })
 })
@@ -44,6 +46,9 @@ buttonResult.addEventListener('click', () => {
 
 buttonClear.addEventListener('click', () => {
     inputArr.splice(0, inputArr.length)
+    inputArr.push(0);
     input.innerHTML = inputArr.join('')
+    inputArr.pop()
 })
+
 
