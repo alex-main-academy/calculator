@@ -29,8 +29,6 @@
 .calculator {
   width: 330px;
   height: 93vh;
-  border: 3px solid gray;
-  border-radius: 50px;
   margin: auto auto;
   color: white;
   background: black;

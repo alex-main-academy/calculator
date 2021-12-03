@@ -6,6 +6,19 @@ let buttonSym = document.querySelectorAll('.button__orange')
 let buttonClear = document.querySelector('.button__clear');
 let buttonResult = document.querySelector('.button__result')
 
+let firstNumber = 0;
+let firstNumberArr = [];
+
+let secondNumber = 0;
+let secondNumberArr = [];
+
+let symbol = '';
+let symbolArr = [];
+
+let plus = 0;
+let minus = 0;
+let mult = 0;
+let slash = 0;
 
 buttonNum.forEach((elem) => {
     elem.addEventListener('click', () => {
@@ -33,6 +46,27 @@ buttonSym.forEach((elem) => {
         }else {
             inputArr.push(elem.innerHTML)
             input.innerHTML = inputArr.join('')
+
+
+            //create first number
+
+            //delete elem in first number array
+            firstNumberArr.splice(0, firstNumberArr.length)
+
+            inputArr.forEach((elem) => {
+                firstNumberArr.push(elem)
+            })
+            firstNumberArr.pop()
+            firstNumber = +firstNumberArr.join('')
+            console.log('first number: ', firstNumber)
+
+            //create symbol
+            inputArr.forEach((elem) => {
+                symbolArr.push(elem)
+            })
+            symbolArr.splice(0, 2)
+            symbol = symbolArr.join('')
+            console.log(symbol)
         }
 
     })
@@ -40,7 +74,41 @@ buttonSym.forEach((elem) => {
 
 
 buttonResult.addEventListener('click', () => {
+    //create second number
+
+    //delete elem in second number array
+    secondNumberArr.splice(0, secondNumberArr.length)
+
+    inputArr.forEach((elem) => {
+        secondNumberArr.push(elem)
+    })
+    secondNumberArr.splice(0, firstNumberArr.length + 1)
+    secondNumber = +secondNumberArr.join('')
+    console.log('second number: ', secondNumber)
+
+    plus = firstNumber + secondNumber;
+    minus = firstNumber - secondNumber;
+    mult = firstNumber * secondNumber;
+    slash = firstNumber / secondNumber;
+
+    inputArr.splice(0, firstNumberArr.length + 1 + secondNumberArr.length)
     
+    switch(symbol) {
+        case '+':
+            inputArr.push(plus)
+            break;
+        case '-':
+            inputArr.push(minus)
+            break;
+        case '*':
+            inputArr.push(mult)
+            break;
+        case '/':
+            inputArr.push(slash)
+            break;
+    }
+
+    input.innerHTML = inputArr.join('')
 })
 
 
@@ -49,6 +117,9 @@ buttonClear.addEventListener('click', () => {
     inputArr.push(0);
     input.innerHTML = inputArr.join('')
     inputArr.pop()
+
+    firstNumber = 0;
+    secondNumber = 0;
 })
 
 
