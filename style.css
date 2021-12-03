@@ -28,17 +28,17 @@
 }
 .calculator {
   width: 330px;
-  height: 93vh;
+  height: 100vh;
   margin: auto auto;
   color: white;
   background: black;
-  padding: 20px;
+  padding: 0 30px;
   display: flex;
   flex-direction: column;
 }
 .calculator__input {
   height: 30%;
-  font-size: 60px;
+  font-size: 80px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;

@@ -106,6 +106,10 @@ buttonResult.addEventListener('click', () => {
     }
 
     input.innerHTML = inputArr.join('')
+
+    if (input.innerHTML == 0) {
+        inputArr.pop()
+    }
 })
 
 
