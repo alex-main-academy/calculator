@@ -4,6 +4,7 @@ let inputArr = [];
 let buttonNum = document.querySelectorAll('.button__darkgray');
 let buttonSym = document.querySelectorAll('.button__orange')
 let buttonClear = document.querySelector('.button__clear');
+let buttonOneClear = document.querySelector('.button__one-clear')
 let buttonResult = document.querySelector('.button__result')
 
 let firstNumber = 0;
@@ -52,21 +53,18 @@ buttonSym.forEach((elem) => {
 
             //delete elem in first number array
             firstNumberArr.splice(0, firstNumberArr.length)
-
+            
             inputArr.forEach((elem) => {
                 firstNumberArr.push(elem)
             })
             firstNumberArr.pop()
             firstNumber = +firstNumberArr.join('')
-            console.log('first number: ', firstNumber)
 
             //create symbol
             inputArr.forEach((elem) => {
                 symbolArr.push(elem)
             })
-            symbolArr.splice(0, 2)
-            symbol = symbolArr.join('')
-            console.log(symbol)
+            symbol = symbolArr[symbolArr.length - 1]
         }
 
     })
@@ -84,7 +82,6 @@ buttonResult.addEventListener('click', () => {
     })
     secondNumberArr.splice(0, firstNumberArr.length + 1)
     secondNumber = +secondNumberArr.join('')
-    console.log('second number: ', secondNumber)
 
     plus = firstNumber + secondNumber;
     minus = firstNumber - secondNumber;
@@ -123,3 +120,13 @@ buttonClear.addEventListener('click', () => {
 })
 
 
+buttonOneClear.addEventListener('click', () => {
+    inputArr.pop()
+    input.innerHTML = inputArr.join('')
+
+    if (inputArr.length == 0) {
+        inputArr.push(0)
+        input.innerHTML = inputArr.join('')
+        inputArr.pop()
+    }
+})
